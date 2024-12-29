@@ -1,0 +1,30 @@
+/* Conteúdo principal da página */
+.area-tabela {
+  padding: 1rem 0;
+  overflow-x: scroll;
+}
+
+table {
+  white-space: nowrap;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  color: #fff;
+  background-color: #2980b9;
+  padding: 0.8rem;
+}
+
+tr:nth-child(even) td {
+  background-color: #ccc;
+}
+
+tr.inativo {
+  display: none;
+}
+
+td {
+  text-align: center;
+  padding: 0.8rem;
+}

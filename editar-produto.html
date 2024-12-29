@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sabor Caseiro - Edite um Produto</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+    <link rel="stylesheet" href="css/styles.min.css" />
+    <!-- JavaScript -->
+    <!-- <script type="module" src="js/scripts.js"></script> -->
+    <!-- <script type="module" src="js/editar-produto.js"></script> -->
+    <script type="module" src="js/scripts.min.js"></script>
+    <script type="module" src="js/editar-produto.min.js"></script>
+  </head>
+  <body>
+    <!-- Cabeçalho da página -->
+    <header class="cabecalho-pagina">
+      <img src="img/logo.svg" alt="Logo do Sabor Caseiro" />
+      <h1>Sabor Caseiro</h1>
+    </header>
+
+    <!-- Nav bar da página -->
+    <nav class="nav-bar-pagina">
+      <a
+        href="javascript:void(0)"
+        id="botao-abrir-sidebar"
+        class="botao-abrir-sidebar"
+      >
+        <i class="bi bi-list"></i>
+      </a>
+      <ul class="lista-nav-bar-pagina">
+        <li>
+          <a href="index.html" class="link-nav-bar-pagina">Cadastrar Produto</a>
+        </li>
+        <li>
+          <a href="consultar-produtos.html" class="link-nav-bar-pagina"
+            >Consultar Produtos</a
+          >
+        </li>
+        <li>
+          <a href="deletar-produto.html" class="link-nav-bar-pagina"
+            >Deletar Produto</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo principal da página -->
+    <main>
+      <h2>Edite um Produto</h2>
+      <form id="form" novalidate>
+        <div class="area-campo">
+          <label for="id"> ID (#): <span>*</span> </label>
+          <input
+            type="number"
+            name="id"
+            id="id"
+            class="campo focus-efeito"
+            placeholder="ID (#) do produto"
+            min="1"
+            required
+          />
+        </div>
+        <div class="area-campo">
+          <label for="novo-nome"> Novo Nome: <span>*</span> </label>
+          <input
+            type="text"
+            name="novo-nome"
+            id="novo-nome"
+            class="campo focus-efeito"
+            placeholder="Novo nome do produto"
+            maxlength="30"
+            required
+          />
+        </div>
+        <div class="area-campo">
+          <label for="novo-tipo"> Novo Tipo: <span>*</span> </label>
+          <select
+            name="novo-tipo"
+            id="novo-tipo"
+            class="campo focus-efeito"
+            required
+          >
+            <option value="">Selecione uma opção</option>
+            <option value="0">Aperitivo</option>
+            <option value="1">Prato Principal</option>
+            <option value="2">Sobremesa</option>
+          </select>
+        </div>
+        <div class="area-campo">
+          <label for="novo-preco"> Novo Preço: <span>*</span> </label>
+          <input
+            type="number"
+            name="novo-preco"
+            id="novo-preco"
+            class="campo focus-efeito"
+            placeholder="Novo preço do produto"
+            min="1"
+            step="0.01"
+            required
+          />
+        </div>
+        <input
+          type="submit"
+          value="Editar"
+          class="botao-enviar-form focus-efeito hover-efeito"
+        />
+      </form>
+    </main>
+
+    <!-- Sidebar da página -->
+    <aside id="sidebar">
+      <button
+        type="button"
+        id="botao-fechar-sidebar"
+        class="botao-fechar-sidebar focus-efeito"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <nav class="nav-bar-sidebar">
+        <ul>
+          <li>
+            <a href="index.html" class="link-nav-bar-sidebar"
+              >Cadastrar Produto</a
+            >
+          </li>
+          <li>
+            <a href="consultar-produtos.html" class="link-nav-bar-sidebar"
+              >Consultar Produtos</a
+            >
+          </li>
+          <li>
+            <a href="deletar-produto.html" class="link-nav-bar-sidebar"
+              >Deletar Produto</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Área do modal -->
+    <div id="area-modal" class="area-modal">
+      <section id="secao-modal">
+        <header class="cabecalho-modal">
+          <h3>Aviso:</h3>
+        </header>
+        <p id="msg-modal" class="msg-modal"></p>
+        <footer class="rodape-modal">
+          <button
+            type="button"
+            id="botao-fechar-modal"
+            class="botao-fechar-modal focus-efeito hover-efeito"
+          >
+            Fechar
+          </button>
+        </footer>
+      </section>
+    </div>
+
+    <!-- Rodapé da página -->
+    <footer class="rodape-pagina">
+      <p class="copyright">
+        Desenvolvido por
+        <a
+          href="https://github.com/vitorSouza952"
+          target="_blank"
+          class="link-copyright"
+          >Vitor Souza</a
+        >. &copy; 2024 Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
+</html>
