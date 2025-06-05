@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor Caseiro - Início</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- <link rel="stylesheet" href="css/principal.css"> -->
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <link rel="stylesheet" href="css/principal.min.css">
+    <link rel="stylesheet" href="css/index.min.css">
+    <!-- <script src="js/principal.js" defer></script> -->
+    <script src="js/principal.min.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="area-logo">
+            <img src="img/logo.svg" alt="Logo do Sabor Caseiro" class="img-logo">
+            <h1>Sabor Caseiro</h1>
+        </div>
+        <nav class="navbar-principal">
+            <button type="button" id="botao-abrir-navbar-lateral" class="botao-alternar-navbar-lateral botao-abrir-navbar-lateral">
+                <i class="bi bi-list"></i>
+            </button>
+            <ul class="lista-nav-principal">
+                <li>
+                    <a href="index.html" class="link-nav-principal">
+                        <i class="bi bi-house"></i> Início
+                    </a>
+                </li>
+                <li>
+                    <a href="cadastro.html" class="link-nav-principal">
+                        <i class="bi bi-plus-square"></i> Cadastro
+                    </a>
+                </li>
+                <li>
+                    <a href="consulta.html" class="link-nav-principal">
+                        <i class="bi bi-eye"></i> Consulta
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="conteudo-principal">
+        <h2 class="titulo-conteudo-principal">Seja bem-vindo ao Sabor Caseiro!</h2>
+        <div class="area-botoes-chamada-acao">
+            <a href="cadastro.html" class="botao botao-chamada-acao">
+                Cadastrar produto <i class="bi bi-plus-square"></i>
+            </a>
+            <a href="consulta.html" class="botao botao-chamada-acao">
+                Consultar produtos <i class="bi bi-eye"></i>
+            </a>
+        </div>
+    </main>
+
+    <div id="fundo-navbar-lateral" class="fundo esconder"></div>
+    <nav id="navbar-lateral" class="navbar-lateral esconder">
+        <button type="button" id="botao-fechar-navbar-lateral" class="botao-alternar-navbar-lateral botao-fechar-navbar-lateral">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <ul class="lista-nav-lateral">
+            <li>
+                <a href="index.html" class="link-nav-lateral">
+                    <i class="bi bi-house"></i> Início
+                </a>
+            </li>
+            <li>
+                <a href="cadastro.html" class="link-nav-lateral">
+                    <i class="bi bi-plus-square"></i> Cadastro
+                </a>
+            </li>
+            <li>
+                <a href="consulta.html" class="link-nav-lateral">
+                    <i class="bi bi-eye"></i> Consulta
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="fundo-modal-msg" class="fundo esconder"></div>
+    <div id="modal-msg" class="modal esconder">
+        <h3 class="titulo-modal">
+            Atenção <i class="bi bi-exclamation-triangle"></i>
+        </h3>
+        <p id="txt-modal-msg" class="txt-modal"></p>
+        <button type="button" id="botao-fechar-modal-msg" class="botao botao-fechar-modal-msg">
+            Fechar <i class="bi bi-x-square"></i>
+        </button>
+    </div>
+
+    <footer class="rodape">
+        <p class="creditos">&copy; 2025 Sabor Caseiro. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
