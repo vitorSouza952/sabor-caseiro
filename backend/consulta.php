@@ -6,9 +6,7 @@
         $pdo = new PDO("mysql:host=localhost;dbname=saborCaseiro", "root", "root");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $resTiposProduto = existemTiposProduto($pdo);
-
         $sql = "SELECT * FROM vwSelecionarProdutos";
-        
         $sql = $pdo->prepare($sql);
         $sql->execute();
         $resProdutos = $sql->fetchAll(PDO::FETCH_ASSOC);
