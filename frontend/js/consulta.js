@@ -1,0 +1,203 @@
+const fundoModalEdicao = document.querySelector("#fundo-modal-edicao");
+const modalEdicao = document.querySelector("#modal-edicao");
+const formEdicao = document.querySelector("#form-edicao");
+const idEdicao = document.querySelector("#id-edicao");
+const nome = document.querySelector("#nome");
+const tipo = document.querySelector("#tipo");
+const opcoes = document.querySelectorAll("option");
+const preco = document.querySelector("#preco");
+const botaoCancelarEdicao = document.querySelector("#botao-cancelar-edicao");
+const fundoModalDelecao = document.querySelector("#fundo-modal-delecao");
+const modalDelecao = document.querySelector("#modal-delecao");
+const formDelecao = document.querySelector("#form-delecao");
+const idDelecao = document.querySelector("#id-delecao");
+const botaoCancelarDelecao = document.querySelector("#botao-cancelar-delecao");
+
+function ocultarModais() {
+  alternarModal(false, fundoModalEdicao, modalEdicao);
+  alternarModal(false, fundoModalDelecao, modalDelecao);
+}
+
+function alternarModal(exibir, fundoModal, modal) {
+  [fundoModal, modal].forEach(function (el) {
+    if (exibir) {
+      el.classList.remove("esconder");
+    } else {
+      el.classList.add("esconder");
+    }
+  });
+}
+
+function prepararEdicao(botaoEditar) {
+  const linhaTabelaProdutos = botaoEditar.closest("tr");
+
+  const celulaID = linhaTabelaProdutos.querySelectorAll(
+    ".celula-tabela-produtos"
+  )[0];
+
+  const celulaNome = linhaTabelaProdutos.querySelectorAll(
+    ".celula-tabela-produtos"
+  )[1];
+
+  const celulaTipo = linhaTabelaProdutos.querySelectorAll(
+    ".celula-tabela-produtos"
+  )[2];
+
+  const celulaPreco = linhaTabelaProdutos.querySelectorAll(
+    ".celula-tabela-produtos"
+  )[3];
+
+  idEdicao.value = celulaID.textContent;
+  nome.value = celulaNome.textContent;
+
+  opcoes.forEach(function (el) {
+    const txtEl = el.textContent.toLowerCase();
+    const txtCelulaTipo = celulaTipo.textContent.toLowerCase();
+
+    if (txtEl === txtCelulaTipo) {
+      el.selected = true;
+    }
+  });
+
+  preco.value = formatarPreco(celulaPreco.textContent);
+  alternarModal(true, fundoModalEdicao, modalEdicao);
+}
+
+function formatarPreco(txtPreco) {
+  txtPreco = txtPreco.replace("R$ ", "");
+  txtPreco = txtPreco.replace(",", ".");
+  return txtPreco;
+}
+
+function prepararDelecao(botaoDeletar) {
+  const linhaTabelaProdutos = botaoDeletar.closest("tr");
+
+  const celulaID = linhaTabelaProdutos.querySelectorAll(
+    ".celula-tabela-produtos"
+  )[0];
+
+  idDelecao.value = celulaID.textContent;
+  alternarModal(true, fundoModalDelecao, modalDelecao);
+}
+
+function validarID(valID) {
+  return !isNaN(valID) && valID >= 1;
+}
+
+function exibirErro(msg, fundoModal, modal) {
+  alternarModal(false, fundoModal, modal);
+  alternarModalMsg(true, msg);
+}
+
+function resetarFormEdicao() {
+  formEdicao.reset();
+  limparID(idEdicao);
+}
+
+function limparID(id) {
+  id.value = "";
+}
+
+window.addEventListener("pageshow", function () {
+  ocultarModais();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    ocultarModais();
+    resetarFormEdicao();
+  }
+});
+
+document.addEventListener("click", function (e) {
+  const elAlvo = e.target;
+
+  if (elAlvo.classList.contains("botao-editar")) {
+    prepararEdicao(elAlvo);
+  }
+
+  if (elAlvo.classList.contains("botao-deletar")) {
+    prepararDelecao(elAlvo);
+  }
+});
+
+formEdicao.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const valID = parseInt(idEdicao.value.trim());
+  const valNome = nome.value.trim();
+  const valTipo = parseInt(tipo.value.trim());
+  const valPreco = parseFloat(preco.value.trim());
+
+  if (!validarID(valID)) {
+    exibirErro(
+      "Erro: O ID é obrigatório e deve ser um número maior ou igual a 1.",
+      fundoModalEdicao,
+      modalEdicao
+    );
+
+    resetarFormEdicao();
+    return;
+  }
+
+  if (!valNome || valNome.length > 50) {
+    exibirErro(
+      "Erro: O nome é obrigatório e deve conter até 50 caracteres.",
+      fundoModalEdicao,
+      modalEdicao
+    );
+
+    resetarFormEdicao();
+    return;
+  }
+
+  if (!validarID(valTipo)) {
+    exibirErro("Erro: Tipo inválido.", fundoModalEdicao, modalEdicao);
+    resetarFormEdicao();
+    return;
+  }
+
+  if (isNaN(valPreco) || valPreco < 1 || valPreco > 999.99) {
+    exibirErro(
+      "Erro: O preço é obrigatório e deve ser um número entre 1 e 999,99.",
+      fundoModalEdicao,
+      modalEdicao
+    );
+
+    resetarFormEdicao();
+    return;
+  }
+
+  this.submit();
+});
+
+botaoCancelarEdicao.addEventListener("click", function () {
+  alternarModal(false, fundoModalEdicao, modalEdicao);
+  resetarFormEdicao();
+});
+
+formDelecao.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const valIDDelecao = parseInt(idDelecao.value.trim());
+
+  if (!validarID(valIDDelecao)) {
+    exibirErro(
+      "Erro: O ID é obrigatório e deve ser um número maior ou igual a 1.",
+      fundoModalDelecao,
+      modalDelecao
+    );
+
+    limparID(idDelecao);
+    return;
+  }
+
+  this.submit();
+});
+
+[fundoModalDelecao, botaoCancelarDelecao].forEach(function (el) {
+  el.addEventListener("click", function () {
+    alternarModal(false, fundoModalDelecao, modalDelecao);
+    limparID(idDelecao);
+  });
+});
