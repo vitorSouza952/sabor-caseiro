@@ -1,15 +1,12 @@
 .area-tabela {
-  display: flex;
-  justify-content: center;
-  overflow-x: scroll;
-  width: 800px;
+  overflow-x: auto;
+  width: fit-content;
   max-width: 100%;
   margin: 0 auto;
 }
 
 .tabela {
   white-space: nowrap;
-  width: 100%;
   border-collapse: collapse;
 }
 
