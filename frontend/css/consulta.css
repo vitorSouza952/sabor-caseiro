@@ -50,6 +50,11 @@
   background-color: #ff0000;
 }
 
+.modal-edicao {
+  max-height: 90%;
+  overflow-y: auto;
+}
+
 .form-edicao {
   display: flex;
   flex-direction: column;
