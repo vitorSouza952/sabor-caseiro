@@ -50,11 +50,6 @@
   background-color: #ff0000;
 }
 
-.modal-edicao {
-  max-height: 90%;
-  overflow-y: auto;
-}
-
 .form-edicao {
   display: flex;
   flex-direction: column;
@@ -113,4 +108,11 @@
 .botao-form-delecao {
   font-size: 0.8em;
   padding: 14px 16px;
+}
+
+@media (orientation: landscape) {
+  .modal-edicao {
+    max-height: 90%;
+    overflow-y: auto;
+  }
 }
